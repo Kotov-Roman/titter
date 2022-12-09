@@ -18,8 +18,8 @@ public class RegistrationController {
     @Autowired
     UserRepo userRepo;
 
-    @Autowired
-    PasswordEncoder encoder;
+//    @Autowired
+//    PasswordEncoder encoder;
 
     @GetMapping("/registration")
     public String registration() {
@@ -37,7 +37,8 @@ public class RegistrationController {
 
         user.setActive(true);
         String password = user.getPassword();
-        user.setPassword(encoder.encode(password));
+//        user.setPassword(encoder.encode(password));
+        user.setPassword(password);
         user.setRoles(Collections.singleton(Role.USER));
         userRepo.save(user);
 
