@@ -33,7 +33,9 @@ public class SecurityConfig {
                 )
                 .formLogin((form) -> form
                         .loginPage("/login")
+                        .defaultSuccessUrl("/main", true)
                         .permitAll()
+
                 )
                 .logout((logout) -> logout.permitAll());
 //                .csrf().disable();
