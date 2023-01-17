@@ -20,8 +20,12 @@
                         <a class="nav-link" aria-current="page" href="/user">User List</a>
                     </li>
                 </#if>
+                <#if user??>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/user/profile">Profile</a>
+                    </li>
+                </#if>
             </ul>
-
 
             <div class="d-flex flex-row">
 
@@ -32,8 +36,6 @@
                         </div>
                     </#if>
             </div>
-
-
         </div>
 
 </nav>
