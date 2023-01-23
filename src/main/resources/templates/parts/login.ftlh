@@ -4,20 +4,54 @@
         <div class="row mb-3">
             <label for="username" class="col-sm-2 col-form-label">User Name:</label>
             <div class="col-sm-3">
-                <input type="text" class="form-control" name="username" placeholder="User name">
+                <input type="text"
+                       class="form-control <#if usernameError??>is-invalid</#if>"
+                       value="<#if user??>${user.username}</#if>"
+                       name="username" placeholder="User name">
+                <#if usernameError??>
+                    <div class="invalid-feedback">
+                        ${usernameError}
+                    </div>
+                </#if>
             </div>
         </div>
         <div class="row mb-3">
             <label for="password" class="col-sm-2 col-form-label">Password:</label>
             <div class="col-sm-3">
-                <input type="password" class="form-control" name="password" placeholder="Password">
+                <input type="password" class="form-control <#if passwordError??>is-invalid</#if>"
+                       name="password" placeholder="Password">
+                <#if passwordError??>
+                    <div class="invalid-feedback">
+                        ${passwordError}
+                    </div>
+                </#if>
             </div>
         </div>
+
         <#if isRegisterForm>
+            <div class="row mb-3">
+                <label for="confirmationPassword" class="col-sm-2 col-form-label">Confirmation Password:</label>
+                <div class="col-sm-3">
+                    <input type="password" class="form-control <#if confirmationPasswordError??>is-invalid</#if>"
+                           name="confirmationPassword" placeholder="Confirmation Password">
+                    <#if confirmationPasswordError??>
+                        <div class="invalid-feedback">
+                            ${confirmationPasswordError}
+                        </div>
+                    </#if>
+                </div>
+            </div>
             <div class="row mb-3">
                 <label for="email" class="col-sm-2 col-form-label">Email:</label>
                 <div class="col-sm-3">
-                    <input type="email" class="form-control" name="email" placeholder="some@mail.com">
+                    <input type="email" class="form-control <#if emailError??>is-invalid</#if>"
+                           value="<#if user??>${user.email}</#if>"
+                           name="email" placeholder="some@mail.com">
+                    <#if emailError??>
+                        <div class="invalid-feedback">
+                            ${emailError}
+                        </div>
+                    </#if>
                 </div>
             </div>
         </#if>

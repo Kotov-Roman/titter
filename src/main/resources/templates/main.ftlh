@@ -10,20 +10,34 @@
     </div>
 
     <div>
-        <button class="btn btn-primary mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+        <a class="btn btn-primary mb-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
                 aria-expanded="false" aria-controls="collapseExample">
             Add new Message
-        </button>
-        <div class="collapse" id="collapseExample">
+        </a>
+        <div class="collapse <#if message??>show</#if>" id="collapseExample">
             <div class="form-row mb-3">
                 <form class="row g-3" method="post" action="/add" enctype="multipart/form-data">
 
                     <div class="col-auto">
-                        <input type="text" name="text" placeholder="write something" class="form-control">
+                        <input type="text" name="text" placeholder="write something"
+                               value="<#if message??>${message.text}</#if>"
+                               class="form-control ${(textError??)?string('is-invalid','')}">
+                        <#if textError??>
+                            <div class="invalid-feedback">
+                                ${textError}
+                            </div>
+                        </#if>
                     </div>
 
                     <div class="col-auto">
-                        <input type="text" name="tag" placeholder="tag" class="form-control">
+                        <input type="text" name="tag" placeholder="tag"
+                               class="form-control ${(tagError??)?string('is-invalid','')}"
+                        value="<#if message??>${message.tag}</#if>">
+                        <#if tagError??>
+                            <div class="invalid-feedback">
+                                ${tagError}
+                            </div>
+                        </#if>
                     </div>
 
                     <div class="col-auto">
