@@ -1,5 +1,4 @@
 <#macro login path isRegisterForm>
-    ${message?if_exists}
     <form action="${path}" method="post">
         <div class="row mb-3">
             <label for="username" class="col-sm-2 col-form-label">User Name:</label>
@@ -53,6 +52,14 @@
                         </div>
                     </#if>
                 </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="g-recaptcha" data-sitekey="6LdDEiQkAAAAAOC5L9faGy0LbNhTgqhYydrJ--82"></div>
+                <#if captchaError??>
+                    <div class="alert alert-danger" role="alert">
+                        ${captchaError}
+                    </div>
+                </#if>
             </div>
         </#if>
 

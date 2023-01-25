@@ -2,6 +2,11 @@
 <#import "parts/login.ftlh" as l>
 <@c.page>
     <p> Add new User:</p>
-    ${message?if_exists}
+    <#if message??>
+        <div class="alert alert-danger" role="alert">
+            ${message}
+        </div>
+    </#if>
+
     <@l.login "/registration" true></@l.login>
 </@c.page>
