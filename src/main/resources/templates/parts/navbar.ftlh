@@ -1,4 +1,4 @@
-<#include "security.ftlh">
+<#--<#include "security.ftlh">-->
 <#import "login.ftlh" as l>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
@@ -15,6 +15,11 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="/main">Messages</a>
                 </li>
+                <#if user??>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/user-messages/${currentUserId}">My Messages</a>
+                    </li>
+                </#if>
                 <#if isAdmin>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="/user">User List</a>
