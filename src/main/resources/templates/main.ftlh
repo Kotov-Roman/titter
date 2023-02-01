@@ -1,4 +1,5 @@
 <#import "parts/common.ftlh" as c>
+<#import "parts/messageEdit.ftlh" as editor>
 
 <@c.page>
     <div class="form-row mb-3">
@@ -9,6 +10,6 @@
         </form>
     </div>
 
-    <#include "parts/messageEdit.ftlh">
+    <@editor.messageForm true/>
     <#include "parts/messageList.ftlh">
 </@c.page>
