@@ -34,8 +34,6 @@ public class MailConfig {
 
         javaMailProperties.setProperty("mail.transport.protocol", protocol);
         javaMailProperties.setProperty("mail.debug", mailDebug);
-//        mailSender.setProtocol(protocol);
-//        poma_kotov@mail.ru
 
         return mailSender;
     }

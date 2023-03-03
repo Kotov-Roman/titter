@@ -12,10 +12,8 @@ public class App {
         SpringApplication.run(App.class, args);
     }
 
-    // getting Circular Dependencies error if define it in sec config
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(8);
     }
 }
-//$2a$08$oK5IBYO2OGEGKmz3OWdiGeZ0tBgcjW7JmlFyo3tY9wL0RvJBQ36JC

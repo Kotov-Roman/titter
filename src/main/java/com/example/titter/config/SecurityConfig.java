@@ -1,6 +1,5 @@
 package com.example.titter.config;
 
-import com.example.titter.interceptors.CsrfTokenInterceptor;
 import com.example.titter.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,7 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-
 
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -30,6 +28,7 @@ public class SecurityConfig {
                         .antMatchers("/",
                                 "/registration",
                                 "/static",
+                                "/js",
                                 "/activate/*")
                         .permitAll()
                         .anyRequest().authenticated()
@@ -43,7 +42,6 @@ public class SecurityConfig {
                 .rememberMe()
                 .and()
                 .logout(LogoutConfigurer::permitAll);
-//                .csrf().disable();
 
         return http.build();
     }
@@ -54,10 +52,4 @@ public class SecurityConfig {
         auth.userDetailsService(userService)
                 .passwordEncoder(passwordEncoder);
     }
-
-    @Bean
-    public CsrfTokenInterceptor csrfTokenInterceptor() {
-        return new CsrfTokenInterceptor();
-    }
-
 }
